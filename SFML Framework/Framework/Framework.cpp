@@ -5,7 +5,10 @@
 void Framework::Init(int width, int height, const std::string& name)
 {
 	window.create(sf::VideoMode(width, height), name);
+
+    DATATABLE_MANEGER.Init();
     Utils::Init();
+    SoundMgr::Instance().Init();
     SCENE_MGR.Init();
     InputMgr::Init();
 }
@@ -46,4 +49,6 @@ void Framework::Do()
 void Framework::Release()
 {
     SCENE_MGR.Release();
+    SoundMgr::Instance().Release();
+    DATATABLE_MANEGER.Release();
 }
