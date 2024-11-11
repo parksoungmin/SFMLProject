@@ -24,6 +24,7 @@ Zombie::Zombie(const std::string& name)
 
 Zombie::~Zombie()
 {
+
 }
 
 void Zombie::SetType(Types type)

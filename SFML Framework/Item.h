@@ -16,6 +16,7 @@ public:
 protected:
 	Player* player;
 	ItemType itemType;
+	ItemType itemTypes = ItemType::health;
 
 	sf::Sprite	body;
 	std::string textureId;

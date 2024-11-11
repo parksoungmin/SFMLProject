@@ -2,10 +2,12 @@
 class DataTable
 {
 public:
-	enum class Types
+	enum class Types // 스트링 테이블에서 데이터를 가져올
+					 // 리스트를 선언 OR 추가해준다.
 	{
 		String,
 		Zombie,
+		Item,
 	};
 	static const int TotalTypes = 1;
 

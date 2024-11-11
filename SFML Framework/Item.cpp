@@ -18,39 +18,13 @@ Item::Item(const std::string& name)
 void Item::SetTypeInfo()
 {
 	itemType = (ItemType)Utils::RandomRange(0, totalItemType - 1);
-
-	switch (itemType)
-	{
-	case Item::ItemType::health:
-	{
-		textureId = "graphics/health_pickup.png";
-		value = 1;
-		//ammo_pickup
-	}
-		break;
-
-	case Item::ItemType::Ammo:
-	{
-		textureId = "graphics/ammo_pickup.png";
-		value = 1;
-	}
-	break;
-	default:
-		break;
-	}
-
-
+	auto& data = ITEM_TABLE->Get(itemType);
+	itemTypes = data.id;
+	textureId = data.textureId;
+	value = data.value;
+	
 	body.setTexture(TEXTURE_MGR.Get(textureId), true);
-	SetOrigin(originPreset); 
-	if (collider != nullptr)
-	{
-		collider->SetSize((sf::Vector2f)body.getTexture()->getSize());
-		collider->SetScale({ 0.6f,0.6f });
-		collider->SetOrigin(Origins::MC);
-		collider->SetOffset({ 2,2 });
-		collider->Reset();
-	}
-
+	SetOrigin(originPreset);
 }
 
 void Item::SetPosition(const sf::Vector2f& pos)
